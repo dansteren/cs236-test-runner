@@ -8,9 +8,7 @@ Test.sh is a comprehensive test runner. It can test your project against a singl
 
 ### Setup your environment
 
-Test.sh has been designed to work with a specific folder structure. In order to use the script you will either need to setup your folder structure the same as it's requirements, or you will need to modify the script to point to the correct locations.
-
-The script is setup to work with a file structure like the following:
+Test.sh has been designed to work with the following folder structure:
 
 
     .                           # The root directory for your project
@@ -34,18 +32,20 @@ The script is setup to work with a file structure like the following:
     │   └── ...                 # Unit tests
     └── ...
 
-NOTE: Future versions may allow you to choose your test case file paths.
+In order to use the script you will either need to setup your folder structure to match, or you will need to modify the script to point to the correct locations (step 4 below).
 
 Once you have the correct file structure, do the following:
 
-1. `git clone https://github.com/xaves/cs236-test-runner.git`
-2. Copy the file into the root of your project directory
+1. Clone the repo: `git clone https://github.com/xaves/cs236-test-runner.git`
+2. Copy the file into the root of your project directory.
 3. Make the file executable for your user: `chmod u+x test.sh`
-4. Run the script with any of the available options. `./test.sh <options>`
+4. Update the output paths (if necessary): `./test.sh -u`
+5. Run the script with any of the available options. `./test.sh <options>`
 
 
 ### Options
 
+ - `-u`     update output paths
  - `-c`     compile the program before running tests
  - `-f`     only test the file passed in
  - `-v`     output version information
