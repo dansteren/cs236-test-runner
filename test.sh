@@ -60,7 +60,7 @@ case $1 in
     printf "${YELLOW}Note: paths can be updated manually by editing the variables on lines 1-6${WHITE}\n\n"
   ;;
   -v|--version)
-    echo "0.1.2"
+    echo "0.1.3"
   ;;
   -cf|-fc|-f)
     if [ "$1" == "-cf" ]||[ "$1" == "-fc" ]
