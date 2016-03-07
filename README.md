@@ -4,6 +4,9 @@ A simple bash script to compile and test your CS 236 Projects
 ## About
 Test.sh is a comprehensive test runner. It can test your project against a single test case or a whole folder, with the additional option to compile your program before testing. It comes packaged with the test cases from the [course website](http://beta.cs.byu.edu/~cs236/tests/tests.php).
 
+##System Requirements
+This test runner was designed for Linux systems, specifically Ubuntu, but should work just fine on macs as well. Windows users: sorry!
+
 ## Get Started
 
 1. Open a terminal and navigate to the root of your project `cd path/to/project-files`
