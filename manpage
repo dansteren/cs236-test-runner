@@ -6,15 +6,17 @@ test.sh - test your project against a series of test cases
 .SH DESCRIPTION
 test.sh is a comprehensive test runner. It can test your project against a single test case or a whole folder, with the additional option to compile your program before testing.
 .SH OPTIONS
--u     update paths
-
 -c     compile the program before running tests
 
 -f     only test the file passed in
 
--v     output version information and exit
-
 -h     display the help man page
+
+-p     run pmccabe only
+
+-u     update paths
+
+-v     output version information and exit
 
 .SH AUTHOR
 Dan Steren (daniel.d.steren@gmail.com)

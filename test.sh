@@ -1,5 +1,5 @@
 #!/bin/bash
-LAB="lab-2"
+LAB="lab-3"
 INPUT=$LAB/input/
 ACTUAL=$LAB/actual/
 EXPECT=$LAB/expect/
@@ -60,7 +60,18 @@ case $1 in
     printf "${YELLOW}Note: paths can be updated manually by editing the variables on lines 1-6${WHITE}\n\n"
   ;;
   -v|--version)
-    echo "0.1.3"
+    echo "0.1.4"
+  ;;
+  -p|--pmccabe)
+    PMCCABE=$(pmccabe $PROJECT*.h $PROJECT*.cpp | awk '{ print $1 }' | sort -n | tail -1)
+    if [ "$PMCCABE" -gt 8 ]
+      then
+        printf "pmccabe......${RED}FAILED${WHITE}\n"
+        echo "Comlexity score: $PMCCABE"
+      else
+        printf "pmccabe......${GREEN}PASSED${WHITE}\n"
+    fi
+
   ;;
   -cf|-fc|-f)
     if [ "$1" == "-cf" ]||[ "$1" == "-fc" ]
@@ -106,6 +117,15 @@ case $1 in
           printf "Test $FILE......${GREEN}PASSED${WHITE}\n"
       fi
     done
+    echo "-------------------"
+    PMCCABE=$(pmccabe $PROJECT*.h $PROJECT*.cpp | awk '{ print $1 }' | sort -n | tail -1)
+    if [ "$PMCCABE" -gt 8 ]
+      then
+        printf "pmccabe......${RED}FAILED${WHITE}\n"
+        echo "Comlexity score: $PMCCABE"
+      else
+        printf "pmccabe......${GREEN}PASSED${WHITE}\n"
+    fi
   ;;
   *)
     echo "invalid options"

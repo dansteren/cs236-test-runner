@@ -18,11 +18,12 @@ Test.sh is a comprehensive test runner. It can test your project against a singl
 
 Test.sh can be run with various different options to provide additional functionality
 
-    -u     update output paths
     -c     compile the program before running tests
     -f     only test the file passed in
-    -v     output version information
     -h     display help
+    -p     run pmccabe only
+    -u     update output paths
+    -v     output version information
 
 Example: `./test.sh -cf 21`
 
