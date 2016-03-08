@@ -7,6 +7,8 @@ Test.sh is a comprehensive test runner. It can test your project against a singl
 ##System Requirements
 This test runner was designed for Linux systems, specifically Ubuntu, but should work just fine on macs as well. Windows users: sorry!
 
+Also, the test runner checks code complexity using the pmccabe tool, and must be installed prior to use. If your distribution supports APT you can install pmccabe by running `sudo apt-get install pmccabe`.
+
 ## Get Started
 
 1. Open a terminal and navigate to the root of your project `cd path/to/project-files`
