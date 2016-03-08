@@ -63,11 +63,11 @@ case $1 in
     echo "0.1.4"
   ;;
   -p|--pmccabe)
-    PMCCABE=$(pmccabe $PROJECT*.h $PROJECT*.cpp | awk '{ print $1 }' | sort -n | tail -1)
-    if [ "$PMCCABE" -gt 8 ]
+    PMCCABE=$(pmccabe $PROJECT*.h $PROJECT*.cpp | awk '{ if ($1 > 8) print $1 "\t" $NF}')
+    if [ "$PMCCABE" != "" ]
       then
         printf "pmccabe......${RED}FAILED${WHITE}\n"
-        echo "Comlexity score: $PMCCABE"
+        echo "$PMCCABE"
       else
         printf "pmccabe......${GREEN}PASSED${WHITE}\n"
     fi
@@ -118,11 +118,11 @@ case $1 in
       fi
     done
     echo "-------------------"
-    PMCCABE=$(pmccabe $PROJECT*.h $PROJECT*.cpp | awk '{ print $1 }' | sort -n | tail -1)
-    if [ "$PMCCABE" -gt 8 ]
+    PMCCABE=$(pmccabe $PROJECT*.h $PROJECT*.cpp | awk '{ if ($1 > 8) print $1 "\t" $NF}')
+    if [ "$PMCCABE" != "" ]
       then
         printf "pmccabe......${RED}FAILED${WHITE}\n"
-        echo "Comlexity score: $PMCCABE"
+        echo "$PMCCABE"
       else
         printf "pmccabe......${GREEN}PASSED${WHITE}\n"
     fi
