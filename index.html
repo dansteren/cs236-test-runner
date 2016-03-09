@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>CS 236 Test Runner by xaves</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>CS 236 Test Runner</h1>
+        <h2>A simple bash script to compile and test your CS 236 Projects</h2>
+        <a href="https://github.com/xaves/cs236-test-runner" class="button"><small>View project on</small> GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a id="cs-236-test-runner" class="anchor" href="#cs-236-test-runner" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CS 236 Test Runner</h1>
+
+<p>A simple bash script to compile and test your CS 236 Projects</p>
+
+<h2>
+<a id="about" class="anchor" href="#about" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>About</h2>
+
+<p>Test.sh is a comprehensive test runner. It can test your project against a single test case or a whole folder, with the additional option to compile your program before testing. It comes packaged with the test cases from the <a href="http://beta.cs.byu.edu/%7Ecs236/tests/tests.php">course website</a>.</p>
+
+<h2>
+<a id="system-requirements" class="anchor" href="#system-requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>System Requirements</h2>
+
+<p>This test runner was designed for Linux systems, specifically Ubuntu, but should work just fine on macs as well. Windows users: sorry!</p>
+
+<p>Also, the test runner checks code complexity using the pmccabe tool, and must be installed prior to use. If your distribution supports APT you can install pmccabe by running <code>sudo apt-get install pmccabe</code>.</p>
+
+<h2>
+<a id="get-started" class="anchor" href="#get-started" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Get Started</h2>
+
+<ol>
+<li>Open a terminal and navigate to the root of your project <code>cd path/to/project-files</code>
+</li>
+<li>Clone the test-runner repo: <code>git clone https://github.com/xaves/cs236-test-runner.git</code>
+</li>
+<li>Navigate inside the repo <code>cd cs236-test-runner</code>
+</li>
+<li>Make the file executable for your user: <code>chmod u+x test.sh</code>
+</li>
+<li>Update path variables (if necessary): <code>./test.sh -u</code>
+</li>
+<li>Run the script with any of the available options. <code>./test.sh &lt;options&gt;</code>
+</li>
+</ol>
+
+<h2>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options</h2>
+
+<p>Test.sh can be run with various different options to provide additional functionality</p>
+
+<pre><code>-c     compile the program before running tests
+-f     only test the file passed in
+-h     display help
+-p     run pmccabe only
+-u     update output paths
+-v     output version information
+</code></pre>
+
+<p>Example: <code>./test.sh -cf 21</code></p>
+
+<h2>
+<a id="concerning-test-files" class="anchor" href="#concerning-test-files" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Concerning Test files</h2>
+
+<p>The test runner comes packaged with the test files provided on the <a href="http://beta.cs.byu.edu/%7Ecs236/tests/tests.php">course website</a>. Any additional tests you wish to run will have to be created manually.</p>
+
+<h2>
+<a id="screenshots" class="anchor" href="#screenshots" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Screenshots</h2>
+
+<p><img src="https://cloud.githubusercontent.com/assets/5455419/13632178/a382c380-e5a5-11e5-90a7-a2962989f4f6.png" alt="cs236-test-runner"></p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/xaves/cs236-test-runner/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/xaves/cs236-test-runner/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/xaves/cs236-test-runner"></a> is maintained by <a href="https://github.com/xaves">xaves</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
