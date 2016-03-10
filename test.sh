@@ -10,6 +10,33 @@ GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
 WHITE='\033[0m'
 
+checkComplexity () {
+  PMCCABE=$(pmccabe $PROJECT*.h $PROJECT*.cpp | awk '{ if ($1 > 8) print $1 "\t" $NF}')
+  if [ "$PMCCABE" != "" ]
+    then
+    printf "pmccabe......${RED}FAILED${WHITE}\n"
+    echo "$PMCCABE"
+  else
+    printf "pmccabe......${GREEN}PASSED${WHITE}\n"
+  fi
+}
+
+compile () {
+  echo "Compiling project..."
+  g++ -g -Wall -std=c++11 $PROJECT*.cpp -o project
+}
+
+testfile () {
+  ./project $INPUT$FILE $ACTUAL$FILE
+  DIFF=$(diff $EXPECT$FILE $ACTUAL$FILE)
+  if [ "$DIFF" != "" ]
+    then
+    printf "Test $FILE......${RED}FAILED${WHITE}\n"
+  else
+    printf "Test $FILE......${GREEN}PASSED${WHITE}\n"
+  fi
+}
+
 case $1 in
   -h|--help)
     man ./manpage
@@ -63,21 +90,12 @@ case $1 in
     echo "0.1.4"
   ;;
   -p|--pmccabe)
-    PMCCABE=$(pmccabe $PROJECT*.h $PROJECT*.cpp | awk '{ if ($1 > 8) print $1 "\t" $NF}')
-    if [ "$PMCCABE" != "" ]
-      then
-        printf "pmccabe......${RED}FAILED${WHITE}\n"
-        echo "$PMCCABE"
-      else
-        printf "pmccabe......${GREEN}PASSED${WHITE}\n"
-    fi
-
+    checkComplexity
   ;;
   -cf|-fc|-f)
     if [ "$1" == "-cf" ]||[ "$1" == "-fc" ]
       then
-        echo "Compiling project..."
-        g++ -g -Wall -std=c++11 $PROJECT*.cpp -o project
+        compile
     fi
     FILE=$2
     if [ "$2" == "" ]
@@ -87,15 +105,7 @@ case $1 in
     fi
     if [ -f $INPUT$FILE ];
       then
-        #  echo "File $FILE exists."
-        ./project $INPUT$FILE $ACTUAL$FILE
-        DIFF=$(diff $EXPECT$FILE $ACTUAL$FILE)
-        if [ "$DIFF" != "" ]
-        then
-            printf "Test $FILE......${RED}FAILED${WHITE}\n"
-          else
-            printf "Test $FILE......${GREEN}PASSED${WHITE}\n"
-        fi
+        testfile
       else
          echo "File '$FILE' does not exist. All tests must be located in '$INPUT'"
     fi
@@ -103,29 +113,14 @@ case $1 in
   ""|-c)
     if [ "$1" == "-c" ]
       then
-        echo "Compiling project..."
-        g++ -g -Wall -std=c++11 $PROJECT*.cpp -o project
+        compile
     fi
     for FILE in $(ls $INPUT)
     do
-      ./project $INPUT$FILE $ACTUAL$FILE
-      DIFF=$(diff $EXPECT$FILE $ACTUAL$FILE)
-      if [ "$DIFF" != "" ]
-      then
-          printf "Test $FILE......${RED}FAILED${WHITE}\n"
-        else
-          printf "Test $FILE......${GREEN}PASSED${WHITE}\n"
-      fi
+        testfile
     done
     echo "-------------------"
-    PMCCABE=$(pmccabe $PROJECT*.h $PROJECT*.cpp | awk '{ if ($1 > 8) print $1 "\t" $NF}')
-    if [ "$PMCCABE" != "" ]
-      then
-        printf "pmccabe......${RED}FAILED${WHITE}\n"
-        echo "$PMCCABE"
-      else
-        printf "pmccabe......${GREEN}PASSED${WHITE}\n"
-    fi
+    checkComplexity
   ;;
   *)
     echo "invalid options"
