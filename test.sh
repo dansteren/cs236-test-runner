@@ -87,7 +87,7 @@ case $1 in
     printf "${YELLOW}Note: paths can be updated manually by editing the variables on lines 1-6${WHITE}\n\n"
   ;;
   -v|--version)
-    echo "0.1.4"
+    echo "1.0.0"
   ;;
   -p|--pmccabe)
     checkComplexity
