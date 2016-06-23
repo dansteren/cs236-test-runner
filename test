@@ -1,5 +1,5 @@
 #!/bin/bash
-LAB="lab-3"
+LAB="lab-1"
 INPUT=$LAB/input/
 ACTUAL=$LAB/actual/
 EXPECT=$LAB/expect/
@@ -11,13 +11,18 @@ YELLOW='\033[0;33m'
 WHITE='\033[0m'
 
 checkComplexity () {
-  PMCCABE=$(pmccabe $PROJECT*.h $PROJECT*.cpp | awk '{ if ($1 > 8) print $1 "\t" $NF}')
-  if [ "$PMCCABE" != "" ]
+  if command -v pmccabe >/dev/null 2>&1;
     then
-    printf "pmccabe......${RED}FAILED${WHITE}\n"
-    echo "$PMCCABE"
-  else
-    printf "pmccabe......${GREEN}PASSED${WHITE}\n"
+      PMCCABE=$(pmccabe $PROJECT*.h $PROJECT*.cpp | awk '{ if ($1 > 8) print $1 "\t" $NF}')
+      if [ "$PMCCABE" != "" ]
+        then
+        printf "pmccabe......${RED}FAILED${WHITE}\n"
+        echo "$PMCCABE"
+      else
+        printf "pmccabe......${GREEN}PASSED${WHITE}\n"
+      fi
+    else
+      printf "pmccabe......${RED}UNINSTALLED${WHITE}: try running 'sudo-apt-get install pmccabe\n'"
   fi
 }
 
@@ -48,7 +53,7 @@ case $1 in
     if [ "$DIR" != "" ]
       then
         sed -i '2s|.*|LAB="lab-'$DIR'"|' test.sh
-        printf "${YELLOW}    The variable \$LAB now contains \"$LAB\". Feel free to use it below...${WHITE}\n"
+        printf "${YELLOW}    The variable \$LAB now contains \"$DIR\". Feel free to use it below...${WHITE}\n"
         DIR=""
     fi
 
@@ -87,7 +92,7 @@ case $1 in
     printf "${YELLOW}Note: paths can be updated manually by editing the variables on lines 1-6${WHITE}\n\n"
   ;;
   -v|--version)
-    echo "1.0.0"
+    echo "1.0.1"
   ;;
   -p|--pmccabe)
     checkComplexity
@@ -115,6 +120,8 @@ case $1 in
       then
         compile
     fi
+    echo "$LAB test results:"
+    echo "-------------------"
     for FILE in $(ls $INPUT)
     do
         testfile

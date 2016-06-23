@@ -1,4 +1,4 @@
-.TH TEST 1 "11 Feb 2016" "0.1.2" "test.sh"
+.TH TEST 1 "11 Feb 2016" "1.0.1" "test.sh"
 .SH NAME
 test.sh - test your project against a series of test cases
 .SH SYNOPSIS
