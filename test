@@ -54,7 +54,7 @@ testfile () {
       printf "Test $FILE......${RED}FAILED${WHITE} no output was produced\n"
       return
   fi
-  DIFF=$(diff $EXPECT$FILE $OUTPUT$FILE)
+  DIFF=$(diff -Z $EXPECT$FILE $OUTPUT$FILE)
   if [ "$DIFF" != "" ]
     then
     printf "Test $FILE......${RED}FAILED${WHITE}\n"
