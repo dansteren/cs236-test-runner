@@ -1,10 +1,10 @@
-.TH TEST 1 "11 Feb 2016" "1.0.2" "test.sh"
+.TH TEST 1 "02 Jul 2016" "1.0.2" "CS 236 Test Runner"
 .SH NAME
-test.sh - test your project against a series of test cases
+CS 236 Test Runner - compile and test your CS 236 projects
 .SH SYNOPSIS
-\[char46]/test.sh [OPTION]... [FILE]
+\[char46]/test [OPTION]... [FILE]
 .SH DESCRIPTION
-test.sh is a comprehensive test runner. It can test your project against a single test case or a whole folder, with the additional option to compile your program before testing.
+CS 236 Test Runner is a comprehensive build tool and test runner. It can test your project against a single test case, or a whole folder. Additionally it can check code complexity, and compile your program for you.
 .SH OPTIONS
 -c     compile the program before running tests
 

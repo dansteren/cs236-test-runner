@@ -1,13 +1,13 @@
 # CS 236 Test Runner
-A simple bash script to compile and test your CS 236 Projects
+Compile and test your CS 236 projects
 
 ## About
-Test is a comprehensive test runner. It can test your project against a single test case or a whole folder, with the additional option to compile your program before testing. It comes packaged with the test cases from the [course website](http://beta.cs.byu.edu/~cs236/tests/tests.php).
+CS 236 Test Runner is a comprehensive build tool and test runner. It can test your project against a single test case, or a whole folder. Additionally it can check code complexity, and compile your program for you. It comes packaged with the test cases from the [course website](http://beta.cs.byu.edu/~cs236/tests/tests.php).
 
 ## System Requirements
 This test runner was designed for Linux systems, specifically Ubuntu, but should work just fine on macs as well. Windows users: sorry!
 
-Also, the test runner attempts to check code complexity using the pmccabe tool. In order to have this functionality, pmccabe must be installed (though the program will still still do everything else if it isn't installed). If your distribution supports APT you can install pmccabe by running `sudo apt-get install pmccabe`.
+The test runner attempts to check code complexity using the pmccabe tool. In order to have this functionality, pmccabe must be installed (though the program will still still do everything else if it isn't installed). If your distribution supports APT you can install pmccabe by running `sudo apt-get install pmccabe`.
 
 ## Get Started
 
