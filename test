@@ -16,13 +16,13 @@ checkComplexity () {
       PMCCABE=$(pmccabe $PROJECT*.h $PROJECT*.cpp | awk '{ if ($1 > 8) print $1 "\t" $NF}')
       if [ "$PMCCABE" != "" ]
         then
-        printf "pmccabe......${RED}FAILED${WHITE}\n"
-        echo "$PMCCABE"
+          printf "pmccabe......${RED}FAILED${WHITE}\n"
+          echo "$PMCCABE"
       else
         printf "pmccabe......${GREEN}PASSED${WHITE}\n"
       fi
     else
-      printf "pmccabe......${RED}UNINSTALLED${WHITE}: try running 'sudo-apt-get install pmccabe\n'"
+      printf "pmccabe......${RED}UNINSTALLED${WHITE}: try running 'sudo apt-get install pmccabe'\n"
   fi
 }
 
