@@ -27,8 +27,21 @@ checkComplexity () {
 }
 
 compile () {
-  echo "Compiling project..."
-  g++ -g -Wall -std=c++11 $PROJECT*.cpp -o project
+  if command -v g++ >/dev/null 2>&1;
+    then
+      printf "Compiling...."
+      g++ -g -std=c++11 $PROJECT*.cpp -o project
+      if [ $? -ne 0 ]
+        then
+          printf "${RED}COMPILATION FAILED${WHITE} stopping test runner\n"
+          exit 1
+        else
+          printf "${GREEN}SUCCESS${WHITE}\n"
+      fi
+    else
+      printf "${RED}Unable to compile${WHITE} g++ not installed. Try running 'sudo apt-get install g++'\n"
+      exit
+  fi
 }
 
 testfile () {
@@ -92,7 +105,7 @@ case $1 in
     printf "${YELLOW}Note: paths can be updated manually by editing the variables on lines 1-6${WHITE}\n\n"
   ;;
   -v|--version)
-    echo "1.0.1"
+    echo "1.0.2"
   ;;
   -p|--pmccabe)
     checkComplexity
